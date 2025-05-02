@@ -1,30 +1,29 @@
+/**
+ * @name 应用主入口
+ * @description 该文件是整个应用的主入口，负责创建 React 根节点并渲染应用。使用appRoutes、SiderRouter和AISender组件
+ * @author: dbxiao
+ * @date 2025/05/02
+ */
+
 import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Spin, Layout, Menu } from 'antd'
+import { Spin, Layout } from 'antd'
 import { Outlet } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { appRoutes } from '@widget/router/index'
 import { AISender } from "@widget/model/ai/Sender"
-import { siderConf, siderItems } from '@widget/router'
+import { SiderRouter } from '@widget/router'
 import './main.css'
 const App: React.FC = () => {
-  const { Header, Sider, Content } = Layout
+  const { Header, Content } = Layout
   return (
       <Layout>
           <Header style={{ color: 'white' }}>
               <div>Ai-Coder</div>
           </Header>
           <Layout>
-              <Sider width={200} theme="light">
-                  <Menu
-                      mode="inline"
-                      defaultSelectedKeys={['1']}
-                      style={{ height: '100%', borderRight: 0 }}
-                      items={siderItems(siderConf)}
-                  >
-                  </Menu>
-              </Sider>
-              <Layout style={{ padding: '0 24px 24px' }}>
+              <SiderRouter />
+              <Layout>
                   <Content>
                       <Outlet />
                   </Content>

@@ -13,6 +13,7 @@
         "baseUrl": "./",
         "rootDir": "./",
         "outDir": "./dist",
+
         /* Bundler mode */
         "moduleResolution": "bundler",
         "allowImportingTsExtensions": true,
@@ -20,12 +21,14 @@
         "moduleDetection": "force",
         "noEmit": true,
         "jsx": "react-jsx",
+
         /* Linting */
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
         "noUncheckedSideEffectImports": true,
+        
         // 添加路径别名配置
         "paths": {
             "@widget": [

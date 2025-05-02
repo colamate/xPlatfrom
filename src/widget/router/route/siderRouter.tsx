@@ -1,0 +1,49 @@
+/**
+ * @name 侧边栏实例
+ * @description 
+    * 侧边栏实例，该组件借助 antd 库的 Layout 和 Menu 组件，
+    * 依据 siderRoutes 递归生成侧边栏菜单，
+    * 菜单项通过 react-router-dom 的 Link 组件实现路由跳转。
+ * @author: dbxiao
+ * @date 2025/05/02
+ */
+
+// 引入路由配置
+import { Link } from 'react-router-dom';
+import { siderRoutes } from '../router';
+import { Layout, Menu } from 'antd';
+
+// 递归生成侧边栏配置
+const siderItems = (items: any[]): any => {
+    return items.map((item) => {
+        if (item.hasOwnProperty('children')) {
+            return {
+                ...item,
+                label: <Link to={item.path}>{item.label}</Link>,
+                children: siderItems(item.children)
+            }
+        } else {
+            return {
+                ...item,
+                label: <Link to={item.path}>{item.label}</Link>
+            };
+        }
+    });
+}
+
+const SiderRouter: React.FC = () => {
+    const { Sider } = Layout
+    return (
+        <Sider width={200} theme="light">
+            <Menu
+                mode="inline"
+                defaultSelectedKeys={['1']}
+                style={{ height: '100%', borderRight: 0 }}
+                items={siderItems(siderRoutes)}
+            >
+            </Menu>
+        </Sider>
+    )
+}
+
+export  { SiderRouter }
