@@ -1,5 +1,13 @@
 # AI-Corder
 
+
+## 本地运行
+
+```
+bun install
+bun run dev
+```
+
 ## 本地AI 部署
 
 ### 下载ollma
@@ -13,6 +21,7 @@ https://ollama.com/
 ollama run deepseek-r1:7b
 ollama run deepseek-r1:8b
 ollama run llama3.3
+ollama run qwen3:4b
 ```
 
 ### 接口请求
