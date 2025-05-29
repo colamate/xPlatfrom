@@ -4,5 +4,5 @@ export interface RouteMap {
     path?: string
     icon?: React.ReactNode
     component?: React.ReactNode,
-    children?: RouteMap | any
+    children?: { [key: string]: RouteMap }
 }
