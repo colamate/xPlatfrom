@@ -7,6 +7,8 @@ const { Search } = Input;
 
 const UserManagement: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
   const [users] = useState([
     { id: 1, name: '张三', gender: '男', age: 25 },
     { id: 2, name: '李四', gender: '女', age: 30 },
@@ -16,26 +18,27 @@ const UserManagement: React.FC = () => {
   const filteredUsers = users.filter(user => {
     return Object.values(user).some(value =>
       String(value).toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
+    )
+  })
 
   const columns = [
     { title: '用户 ID', dataIndex: 'id', key: 'id' },
     { title: '用户名', dataIndex: 'name', key: 'name' },
     { title: '性别', dataIndex: 'gender', key: 'gender' },
     { title: '年龄', dataIndex: 'age', key: 'age' },
-  ];
-
-  const navigate = useNavigate();
-
-  const onRow = (record: any) => {
-    return {
-      onClick: () => {
-        // 假设用户详情页的路由是 /user/detail/:id
-        navigate(`/user/detail/${record.id}`);
-      },
-    };
-  };
+    {
+      title: '操作',
+      key: 'action',
+      render: (_: any, record: any) => (
+        <Button
+          type="link"
+          onClick={() => navigate(`${routerMap.userCenter.children?.userDetail?.path}?id=${record.id}`)}
+        >
+          编辑
+        </Button>
+      ),
+    },
+  ]
 
   return (
     <div>
@@ -47,9 +50,11 @@ const UserManagement: React.FC = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ width: 200 }}
         />
-        <Button type="primary">新增用户</Button>
+        <Button type="primary" onClick={() => navigate(routerMap.userCenter.children?.userAdd.path!)}>
+          新增用户
+        </Button>
       </Space>
-      <Table columns={columns} dataSource={filteredUsers} onRow={onRow} />
+      <Table columns={columns} dataSource={filteredUsers} />
     </div>
   );
 };

@@ -40,9 +40,7 @@ const routerMap: { [key: string]: RouteMap } = {
     userCenter: {
         key: 'userCenter',
         label: '用户中心',
-        // path: '/userCenter',
         icon: <TeamOutlined />,
-        // component: <UserManagement />,
         children: {
             userManagement: {
                 key: 'userManagement',
@@ -75,7 +73,14 @@ const routerMap: { [key: string]: RouteMap } = {
  */
 const siderRoutes = [
     routerMap.home,
-    routerMap.userCenter
+    {
+        ...routerMap.userCenter,
+        children: {
+            userManagement: routerMap.userCenter.children?.userManagement,
+            userAdd: routerMap.userCenter.children?.userAdd,
+            // 隐藏 userDetail，不包含在侧边栏中
+        }
+    }
 ]
 
 export {
