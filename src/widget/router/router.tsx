@@ -28,6 +28,9 @@ const Home = React.lazy(() => import('@pages/home/Home'))
 const UserManagement = React.lazy(() => import('@pages/userCenter/UserManagement'));
 const UserAdd = React.lazy(() => import('@pages/userCenter/UserAdd'));
 const UserDetail = React.lazy(() => import('@pages/userCenter/UserDetail'));
+const PermissionList = React.lazy(() => import('@pages/permission/PermissionList'));
+const PermissionEdit = React.lazy(() => import('@pages/permission/PermissionEdit'));
+const PermissionDetail = React.lazy(() => import('@pages/permission/PermissionDetail'));
 
 const routerMap: { [key: string]: RouteMap } = {
     home: {
@@ -64,6 +67,32 @@ const routerMap: { [key: string]: RouteMap } = {
                 component: <UserDetail />
             }
         }
+    },
+    permission: {
+        key: 'permission',
+        label: '权限管理',
+        path: '/permission',
+        icon: <TeamOutlined />,
+        children: {
+            permissionList: {
+                key: 'permissionList',
+                label: '权限列表',
+                path: '/permission/list',
+                component: <PermissionList />
+            },
+            permissionEdit: {
+                key: 'permissionEdit',
+                label: '权限编辑',
+                path: '/permission/edit',
+                component: <PermissionEdit />
+            },
+            permissionDetail: {
+                key: 'permissionDetail',
+                label: '权限详情',
+                path: '/permission/detail',
+                component: <PermissionDetail />
+            }
+        }
     }
 }
 
@@ -79,6 +108,13 @@ const siderRoutes = [
             userManagement: routerMap.userCenter.children?.userManagement,
             userAdd: routerMap.userCenter.children?.userAdd,
             // 隐藏 userDetail，不包含在侧边栏中
+        }
+    },
+    {
+        ...routerMap.permission,
+        children: {
+            permissionList: routerMap.permission.children?.permissionList,
+            // 隐藏编辑和详情页
         }
     }
 ]
