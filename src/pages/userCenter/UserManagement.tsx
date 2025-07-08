@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { Table, Input, Button, Space } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Table, Input, Button, Space } from 'antd'
+import { useNavigate } from 'react-router-dom'
 import { routerMap } from '@widget/router'
+import { PageContainer } from '@ant-design/pro-components'
 
-const { Search } = Input;
+const { Search } = Input
 
 const UserManagement: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [users] = useState([
     { id: 1, name: '张三', gender: '男', age: 25 },
@@ -41,8 +42,7 @@ const UserManagement: React.FC = () => {
   ]
 
   return (
-    <div>
-      <h1>用户管理页</h1>
+    <PageContainer  header={{title: '用户管理页'}}>
       <Space style={{ marginBottom: 16 }}>
         <Search
           placeholder="搜索用户名、性别、年龄"
@@ -55,8 +55,8 @@ const UserManagement: React.FC = () => {
         </Button>
       </Space>
       <Table columns={columns} dataSource={filteredUsers} />
-    </div>
-  );
-};
+    </PageContainer>
+  )
+}
 
-export default UserManagement;
+export default UserManagement

@@ -29,6 +29,7 @@ const UserManagement = React.lazy(() => import('@pages/userCenter/UserManagement
 const UserAdd = React.lazy(() => import('@pages/userCenter/UserAdd'));
 const UserDetail = React.lazy(() => import('@pages/userCenter/UserDetail'));
 const PermissionList = React.lazy(() => import('@pages/permission/PermissionList'));
+const PermissionAdd = React.lazy(() => import('@pages/permission/PermissionAdd'));
 const PermissionEdit = React.lazy(() => import('@pages/permission/PermissionEdit'));
 const PermissionDetail = React.lazy(() => import('@pages/permission/PermissionDetail'));
 
@@ -71,29 +72,38 @@ const routerMap: { [key: string]: RouteMap } = {
     permission: {
         key: 'permission',
         label: '权限管理',
-        path: '/permission',
         icon: <TeamOutlined />,
         children: {
             permissionList: {
                 key: 'permissionList',
                 label: '权限列表',
                 path: '/permission/list',
+                icon: <BorderInnerOutlined />,
                 component: <PermissionList />
+            },
+            permissionAdd: {
+                key: 'permissionAdd',
+                label: '新增权限',
+                path: '/permission/add',
+                icon: <PlusOutlined />,
+                component: <PermissionAdd />
             },
             permissionEdit: {
                 key: 'permissionEdit',
-                label: '权限编辑',
+                label: '编辑权限',
                 path: '/permission/edit',
+                icon: <InfoCircleOutlined />,
                 component: <PermissionEdit />
             },
             permissionDetail: {
                 key: 'permissionDetail',
                 label: '权限详情',
                 path: '/permission/detail',
+                icon: <InfoCircleOutlined />,
                 component: <PermissionDetail />
             }
         }
-    }
+    },
 }
 
 /**
@@ -114,7 +124,8 @@ const siderRoutes = [
         ...routerMap.permission,
         children: {
             permissionList: routerMap.permission.children?.permissionList,
-            // 隐藏编辑和详情页
+            permissionAdd: routerMap.permission.children?.permissionAdd,
+            // 编辑和详情不在侧边栏中
         }
     }
 ]

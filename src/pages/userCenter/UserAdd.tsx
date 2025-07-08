@@ -1,5 +1,6 @@
-import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import React from 'react'
+import { Form, Input, Button, Select } from 'antd'
+import { PageContainer, ProCard } from '@ant-design/pro-components'
 
 const { Option } = Select;
 
@@ -9,8 +10,7 @@ const UserAdd: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>用户新增页</h1>
+    <PageContainer  header={{title: '用户新增页'}}>
       <Form
         layout="vertical"
         onFinish={onFinish}
@@ -46,7 +46,7 @@ const UserAdd: React.FC = () => {
           </Button>
         </Form.Item>
       </Form>
-    </div>
+    </PageContainer>
   );
 };
 

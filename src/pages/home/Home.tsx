@@ -6,13 +6,16 @@
  */
 
 import React from 'react';
+import { PageContainer } from '@ant-design/pro-components';
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>This is the Home page.</p>
-    </div>
+    <PageContainer header={{ title: '首页' }}>
+      <div>
+        <h1>Home Page</h1>
+        <p>This is the Home page.</p>
+      </div>
+    </PageContainer>
   );
 };
 

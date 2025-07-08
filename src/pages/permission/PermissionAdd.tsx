@@ -1,14 +1,14 @@
-import React from 'react'
-import { Form, Input, Button } from 'antd'
-import { PageContainer } from '@ant-design/pro-components'
+import React from 'react';
+import { Form, Input, Button } from 'antd';
+import { PageContainer } from '@ant-design/pro-components';
 
-const PermissionEdit: React.FC = () => {
+const PermissionAdd: React.FC = () => {
   const onFinish = (values: any) => {
-    console.log('编辑权限提交数据:', values)
-  }
+    console.log('新增权限提交数据:', values);
+  };
 
   return (
-    <PageContainer  header={{title: '权限列表'}}>
+    <PageContainer header={{ title: '新增权限' }}>
       <Form layout="vertical" onFinish={onFinish} style={{ maxWidth: 400, margin: '0 auto' }}>
         <Form.Item
           label="权限名称"
@@ -31,7 +31,7 @@ const PermissionEdit: React.FC = () => {
         </Form.Item>
       </Form>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default PermissionEdit
+export default PermissionAdd;

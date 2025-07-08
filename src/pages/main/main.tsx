@@ -19,12 +19,12 @@ const App: React.FC = () => {
   return (
       <Layout>
           <Header style={{ color: 'white' }}>
-              <div>Ai-Coder</div>
+              <div>AICoder</div>
           </Header>
           <Layout>
               <SiderRouter />
               <Layout>
-                  <Content>
+                  <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                       <Outlet />
                   </Content>
               </Layout>
