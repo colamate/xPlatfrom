@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
-import { PageContainer } from '@ant-design/pro-components'
+import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
 const PermissionEdit: React.FC = () => {
   const onFinish = (values: any) => {

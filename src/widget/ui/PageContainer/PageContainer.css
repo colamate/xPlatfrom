@@ -1,0 +1,96 @@
+/*
+ * @name PageContainer.css
+ * @author AI
+ * @date 2024-08-23
+ * @description 页面容器组件样式文件
+ */
+
+/* 页面容器基础样式 */
+.page-container {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+/* 页面头部样式 */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 页面标题区域 */
+.page-header-title {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 页面主标题样式 */
+.page-header-title h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+  line-height: 1.4;
+}
+
+/* 页面副标题样式 */
+.page-header-subtitle {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #8c8c8c;
+  line-height: 1.5;
+}
+
+/* 页面头部额外操作区域 */
+.page-header-extra {
+  margin-left: 24px;
+  flex-shrink: 0;
+}
+
+/* 页面内容区域 */
+.page-content {
+  width: 100%;
+  min-height: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  /* 移动端头部布局调整 */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* 移动端头部额外区域调整 */
+  .page-header-extra {
+    margin-left: 0;
+    margin-top: 16px;
+    width: 100%;
+  }
+  
+  /* 移动端标题大小调整 */
+  .page-header-title h1 {
+    font-size: 20px;
+  }
+  
+  /* 移动端容器内边距调整 */
+  .page-container .ant-card-body {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 小屏幕标题大小调整 */
+  .page-header-title h1 {
+    font-size: 18px;
+  }
+  
+  /* 小屏幕容器内边距进一步调整 */
+  .page-container .ant-card-body {
+    padding: 12px;
+  }
+}

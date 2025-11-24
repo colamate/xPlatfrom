@@ -51,6 +51,7 @@ html, body {
     transition: all 0.3s;
 
     .app-content {
+        padding: 16px;
         overflow: auto;
     }
 }
@@ -88,10 +89,6 @@ html, body {
 
 /* 响应式样式 - 平板 */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .app-content {
-        padding: 16px;
-    }
-    
     .header-logo {
         .logo {
             font-size: 36px;

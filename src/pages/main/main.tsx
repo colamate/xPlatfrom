@@ -57,7 +57,7 @@ const App: React.FC = () => {
               )}
               <div className='header-logo'>
                   <AntCloudOutlined className='logo' />
-                  <span className='text'>蚂蚁追光</span>
+                  <span className='text'>追光</span>
               </div>
           </Header>
           <Layout className='app-layout-sider'>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Descriptions } from 'antd'
-import { PageContainer } from '@ant-design/pro-components'
+import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
 const UserDetail: React.FC = () => {
   // 模拟用户数据

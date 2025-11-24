@@ -1,6 +1,6 @@
-import React from 'react';
-import { Form, Input, Button, Select, DatePicker } from 'antd';
-import { PageContainer, ProCard } from '@ant-design/pro-components';
+import React from 'react'
+import { Form, Input, Button, Select, DatePicker } from 'antd'
+import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;

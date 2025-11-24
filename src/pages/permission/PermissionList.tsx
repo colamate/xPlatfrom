@@ -1,8 +1,8 @@
-import React from 'react';
-import { Table, Button, Space } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { routerMap } from '@widget/router';
-import { PageContainer } from '@ant-design/pro-components';
+import React from 'react'
+import { Table, Button, Space } from 'antd'
+import { useNavigate } from 'react-router-dom'
+import { routerMap } from '@widget/router'
+import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
 const PermissionList: React.FC = () => {
   const navigate = useNavigate();
