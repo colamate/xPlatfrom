@@ -2,4 +2,106 @@ html, body {
     padding: 0;
     margin: 0;
     background: #fff;
+    overflow: hidden;
+}
+
+/* 应用整体布局 */
+.app-layout-header {
+    min-height: 100vh;
+
+    /* 头部样式 */
+    .app-header {
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+    }
+
+    /* 移动端菜单按钮 */
+    .mobile-menu-btn {
+        color: #fff;
+        font-size: 20px;
+        margin-right: 16px;
+        display: none;
+    }
+    /* 头部Logo */
+    .header-logo {
+        display: flex;
+        width: 200px;
+        gap: 10px;
+        color: #fff;
+        align-items: center;
+
+        .logo {
+            font-size: 42px;
+        }
+        .text {
+            font-size: 20px;
+        }
+    }
+}
+
+.app-layout-sider {
+    height: calc(100vh - 64px);
+}
+
+
+/* 主内容区域布局 */
+.main-content-layout {
+    min-height: calc(100vh - 64px);
+    transition: all 0.3s;
+
+    .app-content {
+        overflow: auto;
+    }
+}
+
+/* 响应式样式 - 移动端 */
+@media (max-width: 767px) {
+    /* 显示移动端菜单按钮 */
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    /* 调整移动端头部Logo大小 */
+    .header-logo {
+        width: auto;
+        gap: 8px;
+        
+        .logo {
+            font-size: 32px;
+        }
+        .text {
+            font-size: 18px;
+        }
+    }
+    
+    /* 移动端内容区域边距调整 */
+    .app-content {
+        padding: 16px;
+    }
+    
+    /* 移动端侧边栏动画 */
+    .app-sider {
+        transition: transform 0.3s;
+    }
+}
+
+/* 响应式样式 - 平板 */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .app-content {
+        padding: 16px;
+    }
+    
+    .header-logo {
+        .logo {
+            font-size: 36px;
+        }
+        .text {
+            font-size: 18px;
+        }
+    }
+}
+
+/* 响应式样式 - 桌面端 */
+@media (min-width: 1024px) {
 }

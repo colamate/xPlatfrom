@@ -3,9 +3,9 @@
  * @author: dbxiao
  * @date 2025/05/02
  * @description 
-    * 侧边栏实例，该组件借助 antd 库的 Layout 和 Menu 组件
-    * 依据 siderRoutes 递归生成侧边栏菜单，
-    * 菜单项通过 react-router-dom 的 Link 组件实现路由跳转。
+ * 侧边栏实例，该组件借助 antd 库的 Layout 和 Menu 组件
+ * 依据 siderRoutes 递归生成侧边栏菜单，
+ * 菜单项通过 react-router-dom 的 Link 组件实现路由跳转。
  */
 
 // 引入路由配置
@@ -36,13 +36,12 @@ const siderItems = (items: any[]): any => {
 const SiderRouter: React.FC = () => {
     const { Sider } = Layout
     return (
-        <Sider width={200} theme="light">
+        <Sider width={200} theme="light" style={{ height: 'calc(100vh - 64px)' }}>
             <Menu
                 mode="inline"
                 defaultSelectedKeys={['1']}
                 style={{ height: '100%', borderRight: 0 }}
-                items={siderItems(siderRoutes)}
-            >
+                items={siderItems(siderRoutes)}>
             </Menu>
         </Sider>
     )

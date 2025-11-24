@@ -39,8 +39,11 @@
 #### 参数定义
 参数要求先定义后使用，遵循块级作用域内变量先定义后使用的原则，禁止在使用时定义参数。
 
-#### UI组件
-优先使用 Ant Design 5 进行开发，若无法满足需求，需将自定义 UI 组件定义在 `widget/ui` 目录下。
+#### 组件（Widget）强制规范
+Widget目录强制分为：业务组件（buss）、UI组件（ui）、Lib库管理目录（lib）、路由目录（router），组件文件必须以大写字母开头，采用驼峰命名法。
+当同一个逻辑或UI在多个页面重复使用时，应将其定义为业务组件或UI组件，避免重复编写代码。
+
+#### 文件命名规范
 
 |类型|命名规则|示例|
 |---|---|---|
@@ -54,47 +57,48 @@
 |路由跳转| 跳转路径必须从 `routerMap` 定义中获取，禁止书写硬编码 | `routerMap.userCenter.children?.userAdd` |
 |CSS定义| 遵循 sass、less 规范，类命名使用驼峰命名法 | `.userProfile` |
 
-
-
 ### 目录规范
-项目采用以下目录结构，以保证代码的组织有序和可维护性：
+项目采用以下标准目录结构，以确保代码组织有序、职责明确和良好的可维护性：
 ```plaintext
-src/
-├── common/                     # 全局公共配置目录
-├── pages/                      # 项目页面目录
-│   ├── index/
+src
+├── common                     # 全局公共配置目录
+├── pages                      # 项目页面目录
+│   ├── index
 │   │   ├── Index.tsx
 │   │   └── Index.css
-│   ├── about/
+│   ├── about
 │   │   ├── About.tsx
 │   │   └── About.css
-│   └── main/
+│   └── main
 │       ├── Main.tsx
 │       └── Main.css
-└── widget/                     # 组件目录，包括lib库、路由、业务组件
-    ├── libs/                   # Lib库管理目录
-    │   ├── utils/              # 工具
-    │   ├── types/              # 类型
-    │   └── hooks/              # 钩子
-    ├── router/                 # 路由目录
-    │   ├── route/              # 路由实例化逻辑
+└── widget                     # 组件目录，包括lib库、路由、业务组件
+    ├── libs                   # Lib库管理目录
+    │   ├── utils              # 工具函数
+    │   ├── types              # 类型定义
+    │   └── hooks              # 自定义钩子
+    ├── router                 # 路由目录
+    │   ├── route              # 路由实例化逻辑
     │   │   ├── appRouter.tsx
     │   │   └── sideRouter.tsx
-    │   ├── index.tsx           # 路由配置
-    │   ├── router.tsx          # 应用路由
-    │   └── types.ts            # 路由映射
-    ├── model/                  # 业务组件目录
-    └── ui/                     # UI组件目录
-        ├── Button/
-        │   ├── index.tsx
+    │   ├── index.tsx          # 路由配置
+    │   ├── router.tsx         # 应用路由
+    │   └── types.ts           # 路由映射类型
+    ├── buss                   # 业务组件
+    │   ├── userManager        # 用户管理组件
+    │      ├── Button.tsx
+    │      └── Button.css
+    └── ui                     # UI组件目录
+        ├── Button
+        │   ├── Button.tsx
         │   └── Button.css
-        ├── Input/
-        │   ├── index.tsx
+        ├── Input
+        │   ├── Input.tsx
         │   └── Input.css
-        ├── Layout/
-        │   ├── index.tsx
+        ├── Layout
+        │   ├── Layout.tsx
         │   └── Layout.css
-        └── Table/
-            └── index.tsx
-└── index.html                  # 项目入口文件 
+        └── Table
+            ├── Table.tsx
+            └── Table.css
 ```
