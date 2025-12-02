@@ -4,6 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { routerMap } from '@widget/router'
 import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
+// 权限数据类型定义
+interface Permission {
+  id: number;
+  name: string;
+  description: string;
+}
+
 const PermissionList: React.FC = () => {
   const navigate = useNavigate();
 
@@ -19,7 +26,7 @@ const PermissionList: React.FC = () => {
     {
       title: '操作',
       key: 'action',
-      render: (_: any, record: any) => (
+      render: (_: unknown, record: Permission) => (
         <Space size="middle">
           <Button
             type="link"

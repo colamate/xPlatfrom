@@ -16,8 +16,8 @@ import { AntCloudOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-des
 // import { AIControl } from "@widget/buss/aiControl/aiControl"
 import './main.css'
 
-
-const App: React.FC = () => {
+// 导出App组件，修复Fast refresh问题
+export const App: React.FC = () => {
   const { Header, Content, Sider } = Layout
   const [mobile, setMobile] = useState(window.innerWidth < 768)
   const [showSider, setShowSider] = useState(window.innerWidth >= 768)
@@ -92,7 +92,7 @@ createRoot(document.getElementById('root')!).render(
       <Suspense fallback={<Spin tip='正在努力加载数据，请稍后…' style={{ marginTop: 30 }} />}>
         <Routes>
           <Route path="/" element={<App />}>
-            {appRoutes.map((item:any, index: number) => (
+            {appRoutes.map((item, index: number) => (
                 <Route key={index} path={item.path} element={item.component} />
             ))}
             <Route path={`*`} element={<Navigate to={'/'} replace />} />

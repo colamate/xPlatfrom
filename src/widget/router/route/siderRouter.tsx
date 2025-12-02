@@ -13,22 +13,29 @@ import { Link } from 'react-router-dom'
 import { siderRoutes } from '../router'
 import { Layout, Menu } from 'antd'
 
+// 引入类型定义
+import { RouteMap } from '../types';
+import type { MenuProps } from 'antd';
+
+// 定义侧边栏菜单项类型
+type SiderMenuItem = MenuProps['items'][number];
+
 // 递归生成侧边栏配置
-const siderItems = (items: any[]): any => {
+const siderItems = (items: RouteMap[]): SiderMenuItem[] => {
     return items.map((item) => {
-        if (item.hasOwnProperty('children')) {
-            const { children } = item
-            const childrenSiders = Object.values(children)
+        if (item.children) {
+            const { children } = item;
+            const childrenSiders = Object.values(children);
             return {
                 ...item,
                 label: <Link to={item.path}>{item.label}</Link>,
-                children: siderItems(childrenSiders)
-            }
+                children: siderItems(childrenSiders as RouteMap[])
+            } as SiderMenuItem;
         } else {
             return {
                 ...item,
                 label: <Link to={item.path}>{item.label}</Link>
-            };
+            } as SiderMenuItem;
         }
     });
 }

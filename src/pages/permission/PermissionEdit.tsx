@@ -2,8 +2,14 @@ import React from 'react'
 import { Form, Input, Button } from 'antd'
 import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
+// 权限表单数据类型定义
+interface PermissionFormData {
+  name: string;
+  description: string;
+}
+
 const PermissionEdit: React.FC = () => {
-  const onFinish = (values: any) => {
+  const onFinish = (values: PermissionFormData) => {
     console.log('编辑权限提交数据:', values)
   }
 

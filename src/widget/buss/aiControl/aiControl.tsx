@@ -25,14 +25,19 @@ import {
   LoadingOutlined, 
   CloseOutlined
 } from '@ant-design/icons';
-import type { UploadProps } from 'antd';
-
 // AI模型配置接口
 interface AIModelConfig {
   name: string;
   baseUrl: string;
   apiKey: string;
   model: string;
+}
+
+// 模型配置表单数据类型
+interface ModelConfigFormData {
+  apiKey: string;
+  model: string;
+  baseUrl: string;
 }
 
 // 消息接口
@@ -109,7 +114,7 @@ export const AIControl: React.FC = () => {
   };
 
   // 处理模型配置
-  const handleConfigSubmit = (values: any) => {
+  const handleConfigSubmit = (values: ModelConfigFormData) => {
     const updatedConfigs = { ...modelConfigs };
     updatedConfigs[currentModel] = {
       ...updatedConfigs[currentModel],
@@ -347,36 +352,12 @@ export const AIControl: React.FC = () => {
     }
   };
 
-  // 添加AI回复消息
-  const addAIMessage = (content: string) => {
-    const aiMessage: Message = {
-      id: `msg-ai-${Date.now()}`,
-      type: 'ai',
-      content,
-      timestamp: Date.now(),
-    };
-    setMessages(prev => [...prev, aiMessage]);
-  };
-
   // 处理输入框回车
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
     }
-  };
-
-  // 图片上传前校验
-  const beforeUpload = (file: File) => {
-    const isImage = file.type.startsWith('image/');
-    if (!isImage) {
-      message.error('请上传图片文件!');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error('图片大小必须小于 2MB!');
-    }
-    return isImage && isLt2M;
   };
 
   // 清空对话历史

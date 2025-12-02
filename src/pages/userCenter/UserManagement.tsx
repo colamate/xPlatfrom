@@ -6,6 +6,14 @@ import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
 const { Search } = Input
 
+// 用户数据类型定义
+interface User {
+  id: number;
+  name: string;
+  gender: string;
+  age: number;
+}
+
 const UserManagement: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate()
@@ -30,7 +38,7 @@ const UserManagement: React.FC = () => {
     {
       title: '操作',
       key: 'action',
-      render: (_: any, record: any) => (
+      render: (_: unknown, record: User) => (
         <Button
           type="link"
           onClick={() => navigate(`${routerMap.userCenter.children?.userDetail?.path}?id=${record.id}`)}
@@ -50,7 +58,12 @@ const UserManagement: React.FC = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ width: 200 }}
         />
-        <Button type="primary" onClick={() => navigate(routerMap.userCenter.children?.userAdd.path!)}>
+        <Button type="primary" onClick={() => {
+          const userAddPath = routerMap.userCenter.children?.userAdd?.path;
+          if (userAddPath) {
+            navigate(userAddPath);
+          }
+        }}>
           新增用户
         </Button>
       </Space>

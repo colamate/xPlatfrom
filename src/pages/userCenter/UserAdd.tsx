@@ -3,10 +3,21 @@ import { Form, Input, Button, Select, DatePicker } from 'antd'
 import { PageContainer } from '@widget/ui/PageContainer/PageContainer'
 
 const { Option } = Select;
-const { RangePicker } = DatePicker;
+
+// 用户表单数据类型定义
+interface UserFormData {
+    username: string;
+    password: string;
+    email: string;
+    real_name: string;
+    phone: string;
+    status: number;
+    birthdate: string;
+    gender: number;
+}
 
 const UserAdd: React.FC = () => {
-    const onFinish = (values: any) => {
+    const onFinish = (values: UserFormData) => {
         console.log('表单提交数据:', values);
     };
 

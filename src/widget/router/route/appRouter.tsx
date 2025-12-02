@@ -11,11 +11,11 @@ import { RouteMap } from "../types"
 
 const getAppRouteItem = (routerMap: {[key: string]: RouteMap}): RouteMap[] => {
     const routes: RouteMap[] = []
-    Object.values(routerMap).map((item: any) => {
-      if (item.hasOwnProperty('children')) {
+    Object.values(routerMap).map((item: RouteMap) => {
+      if (item.children) {
         const { children } = item
         routes.push(item)
-        Object.values(children).map((child: any) => {
+        Object.values(children).map((child: RouteMap) => {
           routes.push(child)
         })
       } else {
