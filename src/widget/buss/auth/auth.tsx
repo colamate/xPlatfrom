@@ -18,8 +18,8 @@ interface AuthGuardProps {
  * 检查用户是否登录，未登录则重定向到登录页
  */
 export const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
-  // 从localStorage获取token‘
-  const uToken = getCookie('u_info')
+  // 从cookie获取token
+  const uToken = getCookie('uToken')
   
   // 如果有token，允许访问路由
   if (uToken) {

@@ -38,6 +38,32 @@ html, body {
             font-size: 20px;
         }
     }
+
+    /* 用户展示区域 */
+    .header-user {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+
+        .user-info {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .username {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
 }
 
 .app-layout-sider {

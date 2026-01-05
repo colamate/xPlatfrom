@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { appRoutes } from '@widget/router/index'
 import { SiderRouter } from '@widget/router'
 import { AuthGuard, LoginGuard } from '@widget/buss/auth/auth'
+import { UserDropdown } from '@widget/buss/auth/UserDropdown'
 import { AntCloudOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 // import { AIControl } from "@widget/buss/aiControl/aiControl"
 import './main.css'
@@ -59,6 +60,9 @@ export const App: React.FC = () => {
               <div className='header-logo'>
                   <AntCloudOutlined className='logo' />
                   <span className='text'>追光</span>
+              </div>
+              <div className="header-user">
+                  <UserDropdown />
               </div>
           </Header>
           <Layout className='app-layout-sider'>

@@ -7,6 +7,7 @@
 
 import message from 'antd/es/message';
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import { getCookie } from './cookie';
 
 const SUCC_CODE = 0
 
@@ -22,8 +23,8 @@ const api: AxiosInstance = axios.create({
 // 请求拦截器
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    // 从localStorage获取token
-    const token = localStorage.getItem('token');
+    // 从cookie获取token
+    const token = getCookie('uToken');
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
