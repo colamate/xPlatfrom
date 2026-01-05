@@ -94,7 +94,7 @@ export const App: React.FC = () => {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
-      <Suspense fallback={<Spin tip='正在努力加载数据，请稍后…' style={{ marginTop: 30 }} />}>
+      <Suspense fallback={<Spin size="large" style={{ marginTop: 30 }} />}>
         <Routes>
           {/* 公共路由 - 不需要登录 */}
           <Route element={<LoginGuard />}>
