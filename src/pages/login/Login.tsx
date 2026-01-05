@@ -33,12 +33,12 @@ const Login: React.FC = () => {
         // 模拟登录成功
         setTimeout(() => {
           // 保存token到cookie
-          if (response.data.token) {
-            setCookie('uToken', response.data.token, { maxAge: 7 * 24 * 60 * 60 }); // 7天有效期
+          if ((response.data as { token?: string }).token) {
+            setCookie('uToken', (response.data as any).token, { maxAge: 7 * 24 * 60 * 60 }); // 7天有效期
           }
           
           // 保存用户信息到cookie
-          if (response.data.userInfo) {
+          if (response.data && typeof response.data === 'object' && 'userInfo' in response.data && response.data.userInfo) {
             setJsonCookie('uInfo', response.data.userInfo, { maxAge: 7 * 24 * 60 * 60 }); // 7天有效期
           }
           

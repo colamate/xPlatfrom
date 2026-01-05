@@ -10,7 +10,7 @@ import { createRoot } from 'react-dom/client'
 import { Spin, Layout, Button } from 'antd'
 import { Outlet } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
-import { appRoutes } from '@widget/router/index'
+import { appRoutes, routerMap } from '@widget/router/index'
 import { SiderRouter } from '@widget/router'
 import { AuthGuard, LoginGuard } from '@widget/buss/auth/auth'
 import { UserDropdown } from '@widget/buss/auth/UserDropdown'
@@ -100,7 +100,7 @@ createRoot(document.getElementById('root')!).render(
           <Route element={<LoginGuard />}>
             {appRoutes.map((item, index: number) => {
               // 登录页和注册页不需要登录
-              if (item.path === '/login' || item.path === '/register') {
+              if (item.path === routerMap.login.path || item.path === routerMap.register.path) {
                 return <Route key={index} path={item.path} element={item.component} />;
               }
               return null;
@@ -113,18 +113,18 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/" element={<App />}>
               {appRoutes.map((item, index: number) => {
                 // 过滤掉登录页和注册页
-                if (item.path === '/login' || item.path === '/register') {
+                if (item.path === routerMap.login.path || item.path === routerMap.register.path) {
                   return null;
                 }
-                return <Route key={index} path={item.path} element={item.component} />;
+                return <Route key={index} path={item.path} element={item.component} />
               })}
               {/* 默认路由重定向到home */}
-              <Route path="" element={<Navigate to="/home" replace />} />
+              <Route path="" element={<Navigate to={routerMap.home.path || '/home'} replace />} />
             </Route>
           </Route>
 
           {/* 404路由 */}
-          <Route path="*" element={<Navigate to="/home" replace />} />
+          <Route path="*" element={<Navigate to={routerMap.home.path || '/home'} replace />} />
         </Routes>
       </Suspense>
     </Router>

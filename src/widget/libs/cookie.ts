@@ -15,6 +15,8 @@
 export interface CookieOptions {
   /** 过期时间（天数），默认为 7 天 */
   expires?: number;
+  /** 过期时间（秒），优先级高于 expires */
+  maxAge?: number;
   /** 过期时间（Date 对象），优先级高于 expires */
   expiresDate?: Date;
   /** Cookie 路径，默认为 '/' */

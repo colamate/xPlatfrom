@@ -35,11 +35,11 @@ export const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
  * 检查用户是否已登录，已登录则重定向到首页
  */
 export const LoginGuard: React.FC<AuthGuardProps> = ({ children }) => {
-  // 从localStorage获取token
-  const token = localStorage.getItem('token');
+  // 从cookie获取token
+  const uToken = getCookie('uToken');
   
   // 如果有token，重定向到首页
-  if (token) {
+  if (uToken) {
     return <Navigate to="/home" replace />;
   }
   
