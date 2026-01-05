@@ -12,6 +12,7 @@ import { Outlet } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { appRoutes } from '@widget/router/index'
 import { SiderRouter } from '@widget/router'
+import { AuthGuard, LoginGuard } from '@widget/buss/auth/auth'
 import { AntCloudOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 // import { AIControl } from "@widget/buss/aiControl/aiControl"
 import './main.css'
@@ -91,12 +92,35 @@ createRoot(document.getElementById('root')!).render(
     <Router>
       <Suspense fallback={<Spin tip='正在努力加载数据，请稍后…' style={{ marginTop: 30 }} />}>
         <Routes>
-          <Route path="/" element={<App />}>
-            {appRoutes.map((item, index: number) => (
-                <Route key={index} path={item.path} element={item.component} />
-            ))}
-            <Route path={`*`} element={<Navigate to={'/'} replace />} />
+          {/* 公共路由 - 不需要登录 */}
+          <Route element={<LoginGuard />}>
+            {appRoutes.map((item, index: number) => {
+              // 登录页和注册页不需要登录
+              if (item.path === '/login' || item.path === '/register') {
+                return <Route key={index} path={item.path} element={item.component} />;
+              }
+              return null;
+            })}
           </Route>
+
+          {/* 私有路由 - 需要登录 */}
+          <Route element={<AuthGuard />}>
+            {/* 带有布局的路由 */}
+            <Route path="/" element={<App />}>
+              {appRoutes.map((item, index: number) => {
+                // 过滤掉登录页和注册页
+                if (item.path === '/login' || item.path === '/register') {
+                  return null;
+                }
+                return <Route key={index} path={item.path} element={item.component} />;
+              })}
+              {/* 默认路由重定向到home */}
+              <Route path="" element={<Navigate to="/home" replace />} />
+            </Route>
+          </Route>
+
+          {/* 404路由 */}
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </Suspense>
     </Router>

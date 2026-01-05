@@ -24,6 +24,9 @@ import { RouteMap } from './types'
  * @description 页面懒加载引入
  **/
 const Home = React.lazy(() => import('@pages/home/Home'))
+// 引入认证页面
+const Login = React.lazy(() => import('@pages/login/Login'));
+const Register = React.lazy(() => import('@pages/register/Register'));
 // 引入新页面
 const UserManagement = React.lazy(() => import('@pages/userCenter/UserManagement'));
 const UserAdd = React.lazy(() => import('@pages/userCenter/UserAdd'));
@@ -34,6 +37,18 @@ const PermissionEdit = React.lazy(() => import('@pages/permission/PermissionEdit
 const PermissionDetail = React.lazy(() => import('@pages/permission/PermissionDetail'));
 
 const routerMap: { [key: string]: RouteMap } = {
+    login: {
+        key: 'login',
+        label: '登录',
+        path: '/login',
+        component: <Login />,
+    },
+    register: {
+        key: 'register',
+        label: '注册',
+        path: '/register',
+        component: <Register />,
+    },
     home: {
         key: 'home',
         label: 'Home',

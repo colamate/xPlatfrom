@@ -18,7 +18,7 @@ import { RouteMap } from '../types';
 import type { MenuProps } from 'antd';
 
 // 定义侧边栏菜单项类型
-type SiderMenuItem = MenuProps['items'][number];
+type SiderMenuItem = Required<MenuProps>['items'][number];
 
 // 递归生成侧边栏配置
 const siderItems = (items: RouteMap[]): SiderMenuItem[] => {
@@ -28,13 +28,13 @@ const siderItems = (items: RouteMap[]): SiderMenuItem[] => {
             const childrenSiders = Object.values(children);
             return {
                 ...item,
-                label: <Link to={item.path}>{item.label}</Link>,
+                label: <Link to={item.path!}>{item.label}</Link>,
                 children: siderItems(childrenSiders as RouteMap[])
             } as SiderMenuItem;
         } else {
             return {
                 ...item,
-                label: <Link to={item.path}>{item.label}</Link>
+                label: <Link to={item.path || '/'}>{item.label}</Link>
             } as SiderMenuItem;
         }
     });
@@ -48,7 +48,7 @@ const SiderRouter: React.FC = () => {
                 mode="inline"
                 defaultSelectedKeys={['1']}
                 style={{ height: '100%', borderRight: 0 }}
-                items={siderItems(siderRoutes)}>
+                items={siderItems(siderRoutes as RouteMap[])}>
             </Menu>
         </Sider>
     )
