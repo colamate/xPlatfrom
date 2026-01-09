@@ -22,16 +22,18 @@ interface UserInfo {
  */
 export const UserDropdown: React.FC = () => {
   const navigate = useNavigate();
+
+  console.log('userInfo');
   
   // 从cookie获取用户信息
-  const userInfo = getJsonCookie<UserInfo>('uInfo');
+  const userInfo = getJsonCookie<UserInfo>('u_info');
   
   // 登出处理
   const handleLogout = async () => {
     try {
       // 清除前端cookie
-      removeCookie('uToken');
-      removeCookie('uInfo');
+      removeCookie('u_token');
+      removeCookie('u_info');
       
       // 调用后端登出接口
       await fetch('/api/auth/logout', {
@@ -61,6 +63,8 @@ export const UserDropdown: React.FC = () => {
   if (!userInfo) {
     return null;
   }
+
+  console.log('userInfo', userInfo);
   
   return (
     <Dropdown menu={{ items }} placement="bottomRight">

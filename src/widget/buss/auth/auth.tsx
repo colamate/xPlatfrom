@@ -19,10 +19,10 @@ interface AuthGuardProps {
  */
 export const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   // 从cookie获取token
-  const uToken = getCookie('uToken')
+  const uInfo = getCookie('u_info');
   
   // 如果有token，允许访问路由
-  if (uToken) {
+  if (uInfo) {
     return children || <Outlet />;
   }
   
@@ -36,10 +36,10 @@ export const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
  */
 export const LoginGuard: React.FC<AuthGuardProps> = ({ children }) => {
   // 从cookie获取token
-  const uToken = getCookie('uToken');
+  const uInfo = getCookie('u_info');
   
   // 如果有token，重定向到首页
-  if (uToken) {
+  if (uInfo) {
     return <Navigate to="/home" replace />;
   }
   

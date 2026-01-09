@@ -34,7 +34,7 @@ const Login: React.FC = () => {
         setTimeout(() => {
           // 保存token到cookie
           if ((response.data as { token?: string }).token) {
-            setCookie('uToken', (response.data as any).token, { maxAge: 7 * 24 * 60 * 60 }); // 7天有效期
+            setCookie('u_token', (response.data as any).token, { maxAge: 7 * 24 * 60 * 60 }); // 7天有效期
           }
           
           // 保存用户信息到cookie
@@ -52,22 +52,6 @@ const Login: React.FC = () => {
       setLoading(false);
       console.error('登录失败:', error);
     }
-  };
-
-  // 测试登录（模拟登录成功）
-  const handleTestLogin = () => {
-    const mockToken = 'mock_token_' + Date.now();
-    const mockUserInfo = {
-      username: '测试用户',
-      id: 1001,
-      gender: 'male'
-    };
-    
-    setCookie('uToken', mockToken, { maxAge: 7 * 24 * 60 * 60 });
-    setJsonCookie('uInfo', mockUserInfo, { maxAge: 7 * 24 * 60 * 60 });
-    
-    message.success('测试登录成功');
-    navigate('/home');
   };
 
   return (
@@ -153,17 +137,6 @@ const Login: React.FC = () => {
                     style={{ width: '100%', height: 40 }}
                   >
                     登录
-                  </Button>
-                </Form.Item>
-
-                <Form.Item>
-                  <Button
-                    type="default"
-                    size="large"
-                    onClick={handleTestLogin}
-                    style={{ width: '100%', height: 40 }}
-                  >
-                    测试登录（模拟）
                   </Button>
                 </Form.Item>
 

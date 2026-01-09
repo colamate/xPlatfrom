@@ -24,7 +24,7 @@ const api: AxiosInstance = axios.create({
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // 从cookie获取token
-    const token = getCookie('uToken');
+    const token = getCookie('u_token');
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
