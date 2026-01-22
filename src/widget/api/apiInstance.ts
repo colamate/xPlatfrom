@@ -6,13 +6,13 @@
  */
 
 import message from 'antd/es/message';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { getCookie } from './cookie';
+import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import { getCookie } from '@widget/libs/cookie';
 
-const SUCC_CODE = 0
+const SUCC_CODE = 0;
 
 // 创建Axios实例
-const api: AxiosInstance = axios.create({
+const apiInstance: AxiosInstance = axios.create({
   baseURL: '', // API基础路径
   timeout: 6000, // 请求超时时间
   headers: {
@@ -21,7 +21,7 @@ const api: AxiosInstance = axios.create({
 });
 
 // 请求拦截器
-api.interceptors.request.use(
+apiInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // 从cookie获取token
     const token = getCookie('u_token');
@@ -36,7 +36,7 @@ api.interceptors.request.use(
 );
 
 // 响应拦截器
-api.interceptors.response.use(
+apiInstance.interceptors.response.use(
   (response: AxiosResponse) => {
     const { data } = response;
 
@@ -46,7 +46,7 @@ api.interceptors.response.use(
     }
     
     // 业务错误
-    return Promise.reject(new Error(data.message || '请求失败'));
+    return Promise.reject(new Error(data || '请求失败'));
   },
   (error) => {
     // 网络错误或服务器错误
@@ -87,56 +87,4 @@ api.interceptors.response.use(
   }
 );
 
-// 定义API响应类型
-interface ApiResponse<T> {
-  code: number;
-  message: string;
-  data: T;
-}
-
-// 导出常用的请求方法
-export default {
-  /**
-   * GET请求
-   * @param url 请求地址
-   * @param params 请求参数
-   * @param config 请求配置
-   * @returns Promise
-   */
-  get<T>(url: string, params?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
-    return api.get(url, { params, ...config });
-  },
-  
-  /**
-   * POST请求
-   * @param url 请求地址
-   * @param data 请求数据
-   * @param config 请求配置
-   * @returns Promise
-   */
-  post<T>(url: string, data?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
-    return api.post(url, data, config);
-  },
-  
-  /**
-   * PUT请求
-   * @param url 请求地址
-   * @param data 请求数据
-   * @param config 请求配置
-   * @returns Promise
-   */
-  put<T>(url: string, data?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
-    return api.put(url, data, config);
-  },
-  
-  /**
-   * DELETE请求
-   * @param url 请求地址
-   * @param params 请求参数
-   * @param config 请求配置
-   * @returns Promise
-   */
-  delete<T>(url: string, params?: Record<string, unknown>, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
-    return api.delete(url, { params, ...config });
-  },
-};
+export default apiInstance;

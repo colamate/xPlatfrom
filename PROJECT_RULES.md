@@ -36,6 +36,7 @@ src/
 │       ├── UserAdd.tsx
 │       └── UserDetail.tsx
 └── widget                     # 组件目录
+    ├── api                    # API接口目录
     ├── libs                   # Lib库管理目录
     │   ├── utils/             # 工具函数
     │   │   ├── format.ts      # 格式化工具

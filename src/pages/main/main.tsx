@@ -119,7 +119,7 @@ createRoot(document.getElementById('root')!).render(
                 return <Route key={index} path={item.path} element={item.component} />
               })}
               {/* 默认路由重定向到home */}
-              <Route path="" element={<Navigate to={routerMap.home.path || '/home'} replace />} />
+              {/* <Route path="" element={<Navigate to={routerMap.home.path || '/home'} replace />} /> */}
             </Route>
           </Route>
 

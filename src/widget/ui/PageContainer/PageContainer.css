@@ -57,6 +57,41 @@
   min-height: 0;
 }
 
+/* 深色主题样式 */
+[data-theme="dark"] .page-container {
+  background: #141414;
+  color: #fff;
+}
+
+[data-theme="dark"] .page-header {
+  border-bottom-color: #262626;
+}
+
+[data-theme="dark"] .page-header-title h1 {
+  color: #fff;
+}
+
+[data-theme="dark"] .page-header-subtitle {
+  color: #8c8c8c;
+}
+
+/* 字体大小样式 */
+[data-font-size="compact"] .page-header-title h1 {
+  font-size: 20px;
+}
+
+[data-font-size="compact"] .page-header-subtitle {
+  font-size: 12px;
+}
+
+[data-font-size="large"] .page-header-title h1 {
+  font-size: 28px;
+}
+
+[data-font-size="large"] .page-header-subtitle {
+  font-size: 16px;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
   /* 移动端头部布局调整 */

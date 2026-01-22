@@ -10,7 +10,7 @@ import { Form, Input, Button, Card, Typography, message, Row, Col } from 'antd';
 import { UserOutlined, LockOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { PageContainer } from '@widget/ui/PageContainer/PageContainer';
-import api from '@widget/libs/api';
+import api from '@widget/api/api';
 
 const { Title, Paragraph } = Typography;
 

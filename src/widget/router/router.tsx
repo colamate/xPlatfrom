@@ -16,7 +16,7 @@
  */
 
 import React from 'react'
-import { BorderInnerOutlined, TeamOutlined, PlusOutlined, InfoCircleOutlined } from '@ant-design/icons'
+import { BorderInnerOutlined, TeamOutlined, PlusOutlined, InfoCircleOutlined, SettingOutlined } from '@ant-design/icons'
 import { RouteMap } from './types'
 
 /**
@@ -35,6 +35,8 @@ const PermissionList = React.lazy(() => import('@pages/permission/PermissionList
 const PermissionAdd = React.lazy(() => import('@pages/permission/PermissionAdd'));
 const PermissionEdit = React.lazy(() => import('@pages/permission/PermissionEdit'));
 const PermissionDetail = React.lazy(() => import('@pages/permission/PermissionDetail'));
+// 引入设置中心页面
+const SettingCenter = React.lazy(() => import('@pages/setting/SettingCenter'));
 
 const routerMap: { [key: string]: RouteMap } = {
     login: {
@@ -119,6 +121,13 @@ const routerMap: { [key: string]: RouteMap } = {
             }
         }
     },
+    settingCenter: {
+        key: 'settingCenter',
+        label: '设置中心',
+        path: '/setting',
+        icon: <SettingOutlined />,
+        component: <SettingCenter />,
+    },
 }
 
 /**
@@ -142,7 +151,8 @@ const siderRoutes = [
             permissionAdd: routerMap.permission.children?.permissionAdd,
             // 编辑和详情不在侧边栏中
         }
-    }
+    },
+    routerMap.settingCenter
 ]
 
 export {

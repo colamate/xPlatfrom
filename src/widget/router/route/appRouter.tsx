@@ -12,14 +12,19 @@ import { RouteMap } from "../types"
 const getAppRouteItem = (routerMap: {[key: string]: RouteMap}): RouteMap[] => {
     const routes: RouteMap[] = []
     Object.values(routerMap).map((item: RouteMap) => {
+      // 只添加有path和component属性的路由项
+      if (item.path && item.component) {
+        routes.push(item)
+      }
+      // 处理子路由
       if (item.children) {
         const { children } = item
-        routes.push(item)
         Object.values(children).map((child: RouteMap) => {
-          routes.push(child)
+          // 子路由也只添加有path和component属性的项
+          if (child.path && child.component) {
+            routes.push(child)
+          }
         })
-      } else {
-        routes.push(item)
       }
     })
     return routes
