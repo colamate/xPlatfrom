@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Descriptions, Button, Form, Input, Select, DatePicker, message } from 'antd';
 import type { FormInstance } from 'antd/lib/form';
-import { api } from '@widget/api/api';
-import type { UserInfo } from '@widget/api/interface';
+import { api } from '@widget/api/comm/api';
+import type { UserInfo } from '@widget/api/comm/interface';
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;

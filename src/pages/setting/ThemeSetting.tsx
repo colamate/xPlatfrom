@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Switch, Radio, Button, message, Form } from 'antd';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
-import { api } from '@widget/api/api';
+import { api } from '@widget/api/comm/api';
 
 const ThemeSetting: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');

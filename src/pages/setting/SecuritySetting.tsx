@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Form, Input, Button, message, Tabs } from 'antd';
-import { api } from '@widget/api/api';
+import { api } from '@widget/api/comm/api';
 
 const { TabPane } = Tabs;
 const { Password } = Input;
